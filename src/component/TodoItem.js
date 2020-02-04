@@ -3,7 +3,7 @@ import { TodoListContext } from './TodoList'
 
 function TodoItem() {
 	const {todos, setTodos} = useContext(TodoListContext);
-	const changeStyle = id => {
+	const changeStyle = id => () => {
 		setTodos(
 			todos.map( (todo, index) =>( index===id ? 
 				{...todo, status:!todo.status} : 
@@ -18,7 +18,7 @@ function TodoItem() {
 				{todos.map( ( {value, status}, id )=>
 					<li		
 						key={id}
-						onClick = { () => changeStyle(id) }
+						onClick = { changeStyle(id) }
 						style={
 							status ? 
 							{ textDecoration: 'line-through' } : 

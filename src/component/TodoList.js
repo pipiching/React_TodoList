@@ -1,13 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, createContext } from 'react'
 import TodoForm from './TodoForm'
 import TodoItem from './TodoItem'
+import Button from '@material-ui/core/Button';
 
-export const TodoListContext = React.createContext({});
+export const TodoListContext = createContext({});
 
 function TodoList() {
 	const [todos, setTodos] = useState([])	
 	const divStyle = {
-		width: '250px',
+		width: '500px',
 		margin: 'auto',
 		textAlign: 'center',
 	}; 
@@ -17,9 +18,9 @@ function TodoList() {
 			<div style={divStyle}>
 				<TodoForm />
 				<TodoItem/>
-				<button onClick={()=> setTodos([])}>
+				<Button variant="contained" color="primary"  onClick={()=> setTodos([])}>
 					reset
-				</button>
+				</Button>
 			</div>
 		</TodoListContext.Provider>
 	)
